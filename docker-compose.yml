@@ -2,10 +2,9 @@ version: "3"
 services: 
     laravel:
         container_name: laravel
-        build: ./laravel
+        build: .
         image: practice/laravel
-        command: ["composer", "create-project", "laravel/laravel", "--prefer-dist" ,"."]
         volumes: 
-            - ./laravel/src:/var/www/laravel
+            - ./src:/var/www/laravel
         tty: true
         
