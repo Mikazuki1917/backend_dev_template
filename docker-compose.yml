@@ -5,6 +5,6 @@ services:
         build: .
         image: practice/laravel
         volumes: 
-            - ./src:/var/www/laravel
+            - ./laravel:/var/www/laravel
         tty: true
         
