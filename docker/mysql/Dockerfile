@@ -1,2 +1,6 @@
 FROM mysql:latest
-CODY ./conf.d/my.cnf /etc/mysql/my.cnf
+RUN apt-get update 
+COPY ./conf.d/my.cnf /etc/mysql/conf.d/my.cnf
+CMD ["mysqld"]
+
+

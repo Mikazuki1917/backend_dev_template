@@ -1,0 +1,4 @@
+./laravel/vendor/**/*/
+./laravel/*.json
+
+./docker/mysql/store/**/*/
