@@ -4,8 +4,12 @@ services:
         container_name: php-laravel 
         build: ./docker/php
         image: practice/php-laravel
+        environment: 
+            HOME: /home/laravel
+            PATH: $PATH:/home/laravel/.composer/vendor/bin
         volumes: 
             - ./laravel:/var/www/laravel
+            - ./docker/php/init.d:/etc/init.d
         tty: true
     mysql:
         container_name: mysql
@@ -15,10 +19,9 @@ services:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_USER: test
             MYSQL_PASSWORD: test
+            MYSQL_DATABASE: laravel
         volumes:
             - ./docker/mysql/store:/var/lib/mysql
-            - ./docker/mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
-            # - ./docker/mysql/init:/init.d
         ports:
             - 3306:3306
         tty: true
