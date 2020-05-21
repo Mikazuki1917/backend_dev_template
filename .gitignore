@@ -1,5 +1,5 @@
 .idea/
-./laravel/vendor/**/*/
-./laravel/*.json
+laravel/vendor/**/*/
+laravel/*.json
 
-./docker/mysql/store/**/*/
+docker/mysql/store/
