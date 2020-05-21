@@ -4,13 +4,16 @@ services:
         container_name: php-laravel 
         build: ./docker/php
         image: practice/php-laravel
-        environment: 
-            HOME: /home/laravel
-            PATH: $PATH:/home/laravel/.composer/vendor/bin
         volumes: 
             - ./laravel:/var/www/laravel
             - ./docker/php/init.d:/etc/init.d
         tty: true
+        ports:
+            - 8080:8080
+        depends_on: 
+            - mysql
+        networks:
+            - laravel-database
     mysql:
         container_name: mysql
         build: ./docker/mysql
@@ -25,6 +28,8 @@ services:
         ports:
             - 3306:3306
         tty: true
+        networks:
+            - laravel-database
     nginx:
         container_name: nginx
         build: ./docker/nginx
@@ -34,4 +39,7 @@ services:
         ports:
             - 1000:8080
         tty: true
+networks: 
+    laravel-database:
+        driver: bridge
         
