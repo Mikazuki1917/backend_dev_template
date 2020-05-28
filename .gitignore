@@ -1,5 +1,12 @@
 .idea/
 laravel/vendor/**/*/
 laravel/*.json
+laravel/*.lock
+laravel/.env.example
+laravel/*.yml
+laravel/*.xml
+laravel/*.md
+laravel/.editorconfig
+laravel/.git*
 
 docker/mysql/store/
