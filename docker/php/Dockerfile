@@ -1,7 +1,6 @@
 FROM php:fpm-alpine3.11
 WORKDIR /var/www/laravel
 ENV HOME /home/laravel
-RUN adduser -SD laravel -h /home/laravel -G wheel 
 RUN apk update \
     && apk add --no-cache git zip unzip libzip-dev \
     && docker-php-ext-install zip pdo_mysql
@@ -10,7 +9,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer
-RUN composer create-project --prefer-dist laravel/laravel . \
-    && composer require laravel/ui
-# USER laravel
-CMD ["php","artisan","serve","--host=localhost","--port=8080"]
+RUN adduser -SD laravel -h /home/laravel -G wheel \
+    && chown -R laravel /home/laravel/.composer 
+USER laravel
+
+CMD ["ash"]
