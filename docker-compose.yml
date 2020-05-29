@@ -5,7 +5,7 @@ services:
         build: ./docker/php
         image: practice/php-laravel
         volumes: 
-            - ./laravel:/var/www/laravel
+            - ./laravel:/home/developer/laravel
             - ./docker/php/init.d:/etc/init.d
         tty: true
         ports:
