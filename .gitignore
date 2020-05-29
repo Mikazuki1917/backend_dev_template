@@ -9,5 +9,6 @@ laravel/*.md
 laravel/.editorconfig
 laravel/.git*
 
-store/**/*
+store
+!store/.gitkeep
 !.gitkeep
