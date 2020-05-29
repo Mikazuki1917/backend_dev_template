@@ -9,4 +9,5 @@ laravel/*.md
 laravel/.editorconfig
 laravel/.git*
 
-docker/mysql/store/
+store/**/*
+!.gitkeep
