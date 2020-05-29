@@ -36,6 +36,7 @@ services:
         image: practice/nginx
         volumes:
             - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+            - ./laravel:/usr/share/nginx
         ports:
             - 1000:8080
         tty: true
