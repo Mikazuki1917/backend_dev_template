@@ -7,10 +7,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer
-RUN adduser -SD developer -h /home/developer -G wheel \
-    && chown -R developer /home/developer/.composer 
+RUN adduser -SD developer -h /home/developer -G wheel
 USER developer
-WORKDIR /home/developer/laravel
+WORKDIR /var/www/slim
 ENV HOME /home/developer
 
-CMD ["ash"]
+CMD ["composer","create-project","--prefer-dist","slim/slim-skeleton:dev-master","."]
