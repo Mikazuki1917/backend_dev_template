@@ -1,19 +1,17 @@
 version: "3"
 services: 
-    php-laravel:
-        container_name: php-laravel 
+    php-api:
+        container_name: php-api
         build: ./docker/php
-        image: practice/php-laravel
+        image: practice/php-api
         volumes: 
-            - ./laravel:/home/developer/laravel
+            - ./src:/var/www/slim
             - ./docker/php/init.d:/etc/init.d
         tty: true
         ports:
             - 8080:8080
         depends_on: 
             - mysql
-        networks:
-            - laravel-database
     mysql:
         container_name: mysql
         build: ./docker/mysql
@@ -28,19 +26,13 @@ services:
         ports:
             - 3306:3306
         tty: true
-        networks:
-            - laravel-database
     nginx:
         container_name: nginx
         build: ./docker/nginx
         image: practice/nginx
         volumes:
             - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-            - ./laravel:/usr/share/nginx
+            - ./src:/usr/share/nginx
         ports:
             - 1000:8080
         tty: true
-networks: 
-    laravel-database:
-        driver: bridge
-        
