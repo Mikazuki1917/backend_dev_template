@@ -1,4 +1,4 @@
-FROM php:fpm-alpine3.11
+FROM php:fpm-alpine
 RUN apk update \
     && apk add --no-cache git zip unzip libzip-dev \
     && docker-php-ext-install zip pdo_mysql
@@ -9,7 +9,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer
 RUN adduser -SD developer -h /home/developer -G wheel
 USER developer
-WORKDIR /var/www/slim
+WORKDIR /var/www
 ENV HOME /home/developer
 
-CMD ["composer","create-project","--prefer-dist","slim/slim-skeleton:dev-master","."]
+CMD ["php-fpm"]
