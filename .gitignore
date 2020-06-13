@@ -1,14 +1,15 @@
 .idea/
-laravel/vendor/**/*/
-laravel/*.json
-laravel/*.lock
-laravel/.env.example
-laravel/*.yml
-laravel/*.xml
-laravel/*.md
-laravel/.editorconfig
-laravel/.git*
+api-framework/vendor/**/*/
+api-framework/*.json
+api-framework/*.lock
+api-framework/.env.example
+api-framework/*.yml
+api-framework/*.xml
+api-framework/*.md
+api-framework/.editorconfig
+api-framework/.git*
 
 docker/mysql/store/**/*
+docker/**/logs
 !store/.gitkeep
 !.gitkeep
