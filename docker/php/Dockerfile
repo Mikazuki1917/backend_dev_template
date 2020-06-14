@@ -7,9 +7,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer
-RUN adduser -SD developer -h /home/developer -G wheel
-USER developer
+RUN adduser -SD api -h /home/api -G wheel
+USER api
 WORKDIR /var/www
-ENV HOME /home/developer
+ENV HOME /home/api
 
 CMD ["php-fpm"]
