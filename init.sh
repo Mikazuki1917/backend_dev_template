@@ -1,17 +1,19 @@
 #!/bin/bash
 
 inputArg () {
+  #echoなしでは表示文字列が改行されないため入っている
   read -p 'what is the db_name? ' db_name
   read -sp 'what is the db_root_password? ' db_root_password
-
+  echo
   read -p 'Do you want to create user?[y/n] ' is_create_user
 
-  if [ $is_create_user = 'n' ];then
-      return
-  fi
+  case $is_create_user in
+    "y" ) read -p 'what is the db_user? ' db_user
+          read -sp 'what is the db_user_password? ' db_user_password
+          echo;;
+    [a-z]* ) return
+  esac
 
-  read -p 'what is the db_user? ' db_user
-  read -sp 'what is the db_user_password? ' db_user_password
 }
 
 setEnviromentVariable () {
