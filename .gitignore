@@ -6,6 +6,7 @@ api-framework/.env.example
 api-framework/*.yml
 api-framework/*.xml
 api-framework/*.md
+api-framework/*.dist
 api-framework/.editorconfig
 api-framework/.git*
 
