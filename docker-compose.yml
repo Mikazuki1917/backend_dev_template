@@ -14,10 +14,10 @@ services:
         build: ./docker/mysql
         image: practice/mysql
         environment: 
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_USER: test
-            MYSQL_PASSWORD: test
-            MYSQL_DATABASE: laravel
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_USER: ${DB_USER}
+            MYSQL_PASSWORD: ${DB_USER_PASSWORD}
+            MYSQL_DATABASE: ${DB_NAME}
         volumes:
             - ./docker/mysql/store:/var/lib/mysql
         ports:
