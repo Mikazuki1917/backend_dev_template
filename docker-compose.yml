@@ -1,9 +1,9 @@
 version: "3"
 services: 
-    php-api:
-        container_name: php-api
+    api:
+        container_name: api
         build: ./docker/php
-        image: practice/php-api
+        image: tmp/api
         volumes: 
             - ./api-framework:/var/www
         tty: true
@@ -12,7 +12,7 @@ services:
     mysql:
         container_name: mysql
         build: ./docker/mysql
-        image: practice/mysql
+        image: tmp/mysql
         environment: 
             MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
             MYSQL_USER: ${DB_USER}
@@ -26,7 +26,7 @@ services:
     nginx:
         container_name: nginx
         build: ./docker/nginx
-        image: practice/nginx
+        image: tmp/nginx
         volumes:
             - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
             - ./docker/nginx/logs:/var/log/nginx
@@ -34,4 +34,4 @@ services:
             - "80:80"
         tty: true
         depends_on:
-            - php-api
+            - api
