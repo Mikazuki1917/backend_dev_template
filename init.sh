@@ -34,7 +34,7 @@ main () {
   done
 
   docker-compose up -d --build
-  docker-compose exec php-api composer create-project --prefer-dist slim/slim-skeleton:dev-master .
+  docker-compose exec api composer create-project --prefer-dist laravel/lumen .
 }
 
 main
